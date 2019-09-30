@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>OOORe Jewelry | Design your Ore</title>
+		<meta name="description" content="Inspiration for drag and drop interactions for the modern UI" />
+		<meta name="keywords" content="drag and drop, interaction, inspiration, web design, ui" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/bottom-area.css" />
+        
+        <link rel="stylesheet" href="css/animate.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/templatemo-style.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.singlePageNav.min.js"></script>
+		
+        
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+    <!-- start navigation -->
+		<nav class="navbar navbar-default templatemo-nav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+					</button>
+					<a href="index.html" class="navbar-brand">OOOre</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="index.html#about">DESIGN</a></li>
+						<li><a href="index.html#team">EXAMPLE</a></li>
+						<li><a href="index.html#service">GUARANTEE</a></li>
+						<li><a href="index.html#portfolio">SHOWCASE</a></li>
+						<li><a href="index.html#contact">CONTACT</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- end navigation -->
+		<div class="container">
+			<!-- Top Navigation -->
+			
+			<div class="content">
+				<header class="codrops-header">
+                    <a href="index_2.html"><img src="images/step2.png" class="img-responsive center-block"></a>
+					<h1>Pick your favorite Ores <span>Drag it to bottom selection</span></h1>
+					
+				</header>
+				<div id="grid" class="grid clearfix">
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+				</div>
+				<!-- Related demos -->
+				<section class="related">
+					<p>If you need some inspiration:</p>
+					<a href="http://tympanus.net/Development/DraggableDualViewSlideshow/">
+						<img src="img/related/DualViewSlideshow.png" alt="Dual-View Slideshow Image"/>
+						<h3>Pure Ore - Call from the earth's land</h3>
+					</a>
+					<a href="#">
+						<img src="img/related/MorphingButtons.png" alt="Morphing Buttons Image" />
+						<h3>Exquisite processing - Fashion representative</h3>
+					</a>
+				</section>
+			</div><!-- /content -->
+		</div><!-- /container -->
+		<div id="drop-area" class="drop-area">
+			<div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+			</div>
+		</div>
+        
+        <!-- start copyright -->
+        <footer id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                       	Copyright &copy; 2020 OOOre</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end copyright -->
+        
+		<div class="drop-overlay"></div>
+		<script src="js/draggabilly.pkgd.min.js"></script>
+		<script src="js/dragdrop.js"></script>
+		<script>
+			(function() {
+				var body = document.body,
+					dropArea = document.getElementById( 'drop-area' ),
+					droppableArr = [], dropAreaTimeout;
+
+				// initialize droppables
+				[].slice.call( document.querySelectorAll( '#drop-area .drop-area__item' )).forEach( function( el ) {
+					droppableArr.push( new Droppable( el, {
+						onDrop : function( instance, draggableEl ) {
+							// show checkmark inside the droppabe element
+							classie.add( instance.el, 'drop-feedback' );
+							clearTimeout( instance.checkmarkTimeout );
+							instance.checkmarkTimeout = setTimeout( function() { 
+								classie.remove( instance.el, 'drop-feedback' );
+							}, 800 );
+							// ...
+						}
+					} ) );
+				} );
+
+				// initialize draggable(s)
+				[].slice.call(document.querySelectorAll( '#grid .grid__item' )).forEach( function( el ) {
+					new Draggable( el, droppableArr, {
+						draggabilly : { containment: document.body },
+						onStart : function() {
+							// add class 'drag-active' to body
+							classie.add( body, 'drag-active' );
+							// clear timeout: dropAreaTimeout (toggle drop area)
+							clearTimeout( dropAreaTimeout );
+							// show dropArea
+							classie.add( dropArea, 'show' );
+						},
+						onEnd : function( wasDropped ) {
+							var afterDropFn = function() {
+								// hide dropArea
+								classie.remove( dropArea, 'show' );
+								// remove class 'drag-active' from body
+								classie.remove( body, 'drag-active' );
+							};
+
+							if( !wasDropped ) {
+								afterDropFn();
+							}
+							else {
+								// after some time hide drop area and remove class 'drag-active' from body
+								clearTimeout( dropAreaTimeout );
+								dropAreaTimeout = setTimeout( afterDropFn, 400 );
+							}
+						}
+					} );
+				} );
+			})();
+		</script>
+	</body>
+</html>
